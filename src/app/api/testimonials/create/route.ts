@@ -48,7 +48,7 @@ const RATE_LIMIT_TIME_FRAME = 15 * 60 * 1000; // 15 minutes
 const RATE_LIMIT_MAX_REQUESTS = 13; // Max 3 requests per IP per time frame
 
 function rateLimit(request:NextRequest) {
-    const ip = request.headers.get('x-forwarded-for') || request.ip ;
+    const ip = request.headers.get('x-forwarded-for');
     console.log('IP:', ip);
     
     const now = Date.now();

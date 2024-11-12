@@ -20,14 +20,18 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "tailwind.config.js", "src/dbconfig/dbConfig.js", "next.config.mjs"  ],
+    "**/*.tsx",
+    "tailwind.config.js",
+    "src/dbconfig/dbConfig.js",
+    "next.config.mjs"
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -107,7 +107,7 @@ function Page() {
                                     value={formData[field.name]}
                                     onChange={handleChange}
                                     className="w-full bg-white/5 border border-blue-500/30 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition duration-200 ease-in-out p-2 text-white"
-                                    rows="4"
+                                    rows={4}
                                 />
                             ) : (
                                 <input

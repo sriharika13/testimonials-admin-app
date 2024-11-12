@@ -7,7 +7,9 @@ import {FaPen, FaStar} from 'react-icons/fa'
 function TestimonialCard({ customerName, customerCompany, customerSocialId, customerReview, customerPosition, avatarUrl ,rating}) {
   
   const handleDelete = async ({userId,testimonialId}) => {
-    const res = await axios.delete('/api/testimonials/delete',{userId,testimonialId})
+    const res = await axios.delete('/api/testimonials/delete', {
+      data: { userId, testimonialId }
+    })
 
   }
   
