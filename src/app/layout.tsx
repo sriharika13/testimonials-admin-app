@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { usePathname } from "next/navigation";
 import "./globals.css";
 import Navbar from '../components/Navbar';
 
@@ -10,10 +11,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const path = usePathname();
+
+  // Show Navbar only on the root path (/) and the profile path (/profile)
+  const showNavbar = path === '/' || path === '/profile';
+
   return (
     <html lang="en">
       <body className="bg-gradient-to-br from-gray-900 to-black">
-        <Navbar />
+        {showNavbar && <Navbar />}
         {children}
       </body>
     </html>
