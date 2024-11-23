@@ -8,12 +8,11 @@ connectDb();
 
 // Logic to get all testimonials for auser  goes here
 
-export async function GET(request) {
-    const reqBody = await request.json();
-    const { userId } = reqBody;
+export async function GET(request: NextRequest) {
+    const { searchParams } = new URL(request.url);
+    const userId = searchParams.get('userId');
 
     if (!userId) {
-
         return NextResponse.json({ message: "Please provide user id" }, { status: 400 });
     }
 
@@ -25,7 +24,6 @@ export async function GET(request) {
             success: true,
             testimonials
         });
-
     } catch (error) {
         return NextResponse.json({
             message: 'Testimonials fetch failed',

@@ -3,29 +3,22 @@ import type { NextRequest } from 'next/server'
  
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-    // Redirect to the home page if the user is not authenticated
-
     const path = request.nextUrl.pathname
-
     const isPublicPath = path === '/signin' || path === '/signup'
-
     const token = request.cookies.get('token')?.value || ''
 
+    // If the user is trying to access a public path and is already logged in, redirect to profile
     if (isPublicPath && token) {
         return NextResponse.redirect(new URL('/profile', request.url))
     }
 
+    // If the user is trying to access a protected path without a token, redirect to signin
     if (!isPublicPath && !token) {
         return NextResponse.redirect(new URL('/signin', request.url))
     }
 
-
-
-
-
-
-  //return NextResponse.redirect(new URL('/home', request.url))
-
+    // Allow the request to proceed if the user is authenticated or accessing public paths
+    return NextResponse.next()
 }
  
 // See "Matching Paths" below to learn more
